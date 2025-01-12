@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button, .vote-btn {
+      width: 100%;
+      padding: 10px;
+      color: #fff;
+      background-color: #5cb85c;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover, .vote-btn:hover {
+      background-color: #4cae4c;
+    }
+    .party-buttons {
+      margin-top: 20px;
+    }
+    .vote-btn {
+      margin: 10px 0;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Voting System</h1>
+    <!-- Login Section -->
+    <div id="login-section">
+      <div class="form-group">
+        <label for="id-number">Enter Your Identification Number:</label>
+        <input type="text" id="id-number" placeholder="Enter ID number" required>
+      </div>
+      <button id="login-btn">Login</button>
+    </div>
+
+    <!-- Voting Section -->
+    <div id="voting-section" class="hidden">
+      <h2>Vote for Your Party</h2>
+      <div class="party-buttons">
+        <button class="vote-btn" onclick="submitVote('Party A')">Party A</button>
+        <button class="vote-btn" onclick="submitVote('Party B')">Party B</button>
+        <button class="vote-btn" onclick="submitVote('Party C')">Party C</button>
+        <button class="vote-btn" onclick="submitVote('Party D')">Party D</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Select elements
+    const loginSection = document.getElementById('login-section');
+    const votingSection = document.getElementById('voting-section');
+    const idNumberInput = document.getElementById('id-number');
+
+    // Login functionality
+    document.getElementById('login-btn').addEventListener('click', function () {
+      const idNumber = idNumberInput.value.trim();
+      if (idNumber) {
+        // Mock validation
+        alert(`Logged in successfully with ID: ${idNumber}`);
+        loginSection.classList.add('hidden');
+        votingSection.classList.remove('hidden');
+      } else {
+        alert('Please enter a valid identification number.');
+      }
+    });
+
+    // Voting functionality
+    function submitVote(party) {
+      alert(`You have voted for ${party}. Thank you for your vote!`);
+      // Reset the page for demonstration
+      loginSection.classList.remove('hidden');
+      votingSection.classList.add('hidden');
+      idNumberInput.value = '';
+    }
+  </script>
+</body>
+</html>
